@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 
 const cors = require('cors');
-const morgan = require('morgan'); // 디버깅
-const helmet = require('helmet'); // 보안
+const morgan = require('morgan');
+const helmet = require('helmet');
 var engines = require('consolidate');
 var path = require('path');
 var logger = require('morgan');
@@ -24,11 +24,8 @@ app.engine('html', require('ejs').renderFile);
 
 // 기본 path를 /public으로 설정(css, javascript 등의 파일 사용을 위해)
 app.use(express.static(__dirname + '/public'));
-
-
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
-
 
 const port = 5001 
 
