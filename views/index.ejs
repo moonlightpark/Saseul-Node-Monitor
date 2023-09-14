@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<html lang="ko">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title><%= title %></title>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  </head>
-
-	<body>
-		 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
     <table border="1">
         <thead>
             <tr>
@@ -34,99 +32,13 @@
                 <td>validator</td>
                 <td>miner</td>
                 <td>receipt_count</td>
-                
             </tr>
         </thead>
-	        <tbody class="table_body">
-	
-	        </tbody>
-			<button type="button" onclick="getJSON()"> 새로고침 </button>
+	<tbody class="table_body">
+	</tbody>
+	<button type="button" onclick="getJSON()"> 새로고침 </button>
     </table>
 		
-		
-		<script>
-		function getJSON() {
-			
-			var node_url = [
-							'http://124.63.219.216:80/info',
-							"http://124.63.219.216:81/info"
-							];
 
-
-
-			for (var i in node_url){
-	
-	
-				var config = {
-	            	method: 'get',
-					url: node_url[i], headers:{"Content-Type": "application/json", "Access-Control-Allow-Origin":"*", "Access-Control-Allow-Headers":"x-access-token, Origin, X-Requested-With, Content-Type, Accept", "Access-Control-Allow-Methods":"GET", "Accept":"application/json, text/plain, /", "Content-Type": "multipart/form-data"}
-	            };
-	        
-	            axios(config);
-	
-
-				axios.get(node_url[i],config)
-				.then(function (response) {
-					
-			            var json_obj = response.data; //parse JSON
-			            
-			            str = '<TR>';
-			                status  = json_obj.data.status;
-			                version = json_obj.data.version;
-			                chain_maker_policy     = json_obj.data.chain_maker_policy;
-			                resource_miner_policy  = json_obj.data.resource_miner_policy;
-			                collector_policy       = json_obj.data.collector_policy;
-			                mining                 = json_obj.data.mining;
-			                main_chain_waiting     = json_obj.data.main_chain_waiting;
-			                resource_chain_waiting = json_obj.data.resource_chain_waiting;
-			                
-			                last_block_height      = json_obj.data.last_block.height;
-			                last_block_timestamp   = json_obj.data.last_block.s_timestamp;
-			                last_block_transaction_count      = json_obj.data.last_block.transaction_count;
-			                
-			                last_resource_block_height        = json_obj.data.last_resource_block.height;
-			                last_resource_block_timestamp     = json_obj.data.last_resource_block.timestamp;
-			                last_resource_block_difficulty    = json_obj.data.last_resource_block.difficulty;
-			                last_resource_block_main_height   = json_obj.data.last_resource_block.main_height;
-			                last_resource_block_validator     = json_obj.data.last_resource_block.validator;
-			                last_resource_block_miner         = json_obj.data.last_resource_block.miner;
-			                last_resource_block_receipt_count = json_obj.data.last_resource_block.receipt_count;
-			                
-			                
-			                str += '<TD>' + node_url[i] + '</TD>';
-			                str += '<TD>' + status + '</TD>';
-			                str += '<TD>' + version + '</TD>';
-			                str += '<TD>' + chain_maker_policy + '</TD>';
-			                str += '<TD>' + resource_miner_policy + '</TD>';
-			                str += '<TD>' + collector_policy + '</TD>';
-			                str += '<TD>' + mining + '</TD>';
-			                str += '<TD>' + main_chain_waiting + '</TD>';
-			                str += '<TD>' + resource_chain_waiting + '</TD>';
-			                str += '<TD>' + last_block_height + '</TD>';
-			                str += '<TD>' + last_block_timestamp + '</TD>';
-			                str += '<TD>' + last_block_transaction_count + '</TD>';
-			                str += '<TD>' + last_resource_block_height + '</TD>';
-			                str += '<TD>' + last_resource_block_timestamp + '</TD>';
-			                str += '<TD>' + last_resource_block_difficulty + '</TD>';
-			                str += '<TD>' + last_resource_block_main_height + '</TD>';
-			                str += '<TD>' + last_resource_block_validator + '</TD>';
-			                str += '<TD>' + last_resource_block_miner + '</TD>';
-			                str += '<TD>' + last_resource_block_receipt_count + '</TD>';
-
-			                str += '</TR>';
-	
-			            $('.table_body').append(str);
-				})
-				.catch(function (error) {
-					console.log(":(");
-					//console.log(error);
-				})
-				.then(function () {
-					// 항상 실행
-				});
-			}
-
-		}
-		</script>
-	</body>
+</body>
 </html>
