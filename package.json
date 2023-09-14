@@ -1,0 +1,26 @@
+{
+  "name": "monitor",
+  "version": "1.0.0",
+  "description": "Saseul Node Monitor",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ChoRongChoRong-Saseul",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^1.0.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "html": "^1.0.0",
+    "morgan": "^1.10.0",
+    "mustache": "^4.2.0",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
